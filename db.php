@@ -24,7 +24,7 @@ if (isset($_REQUEST["action"]) && $_REQUEST["action"] == "update") {
 	$ticket = $tickets->$id;
 
 	$ticket->objet = $_REQUEST["objet"];
-	$ticket->responsables = $_REQUEST["responsables"];
+	$ticket->responsables = json_decode($_REQUEST["responsables"]);
 	$ticket->start = $_REQUEST["start"];
 	$ticket->status = $_REQUEST["status"];
 	$ticket->description = $_REQUEST["description"];

@@ -44,3 +44,18 @@
 	width: 100%;
 	text-align: center;
 }
+
+.modal label {
+    margin-top: 1em;
+    margin-bottom: 0.2em;
+}
+
+.responsables {
+    float:left;
+    color: black;
+}
+
+.resp-label {
+    float: left;
+    margin-top: 0.2em;
+}
