@@ -14,7 +14,7 @@ function refresh_db() {
             modal += "<h4><i class='button-icon icon fa-edit'></i>&nbsp;Contenu du ticket</h4>";
 
             modal += "<label>Objet : </label><input id='objet" + i + "' type='text' value='" + field["objet"] + "' />";
-            modal += "<label>Description : </label><textarea id='description" + i + "'>" + field["description"] + "</textarea>";
+            modal += "<label>Description et commentaires: </label><textarea id='description" + i + "'>" + field["description"] + "</textarea>";
             modal += "<label>Contact : </label><input id='email" + i + "' type='text' value='" + field["email"] + "' />";
 
 
@@ -115,7 +115,11 @@ function update_db(id) {
             responsables += "\"" + responsable + ":" + temps + "\",";
         }
     }
-    responsables = responsables.substring(0,responsables.length - 1) + "]";
+    if(responsables.length - 1) {
+        responsables = responsables.substring(0,responsables.length - 1) + "]";
+    } else {
+        responsables = "[]";
+    }
 
     start = $("#start" + id).val();
     status = $("#status" + id).val();
@@ -126,6 +130,7 @@ function update_db(id) {
     $.post( "db.php", {
             "action" : "update", 
             "id" : id, 
+            "type": type,
             "email": email,
             "responsables": responsables,
             "start": start,
