@@ -13,6 +13,7 @@ if (isset($_REQUEST["action"]) && $_REQUEST["action"] == "create") {
 
 	$ticket = [];
 	$id = max($ids) + 1;
+	$date = getdate();
 
 	$ticket["type"] = $_REQUEST["type"];
 	$ticket["email"] = $_REQUEST["email"];
@@ -20,7 +21,7 @@ if (isset($_REQUEST["action"]) && $_REQUEST["action"] == "create") {
 	$ticket["description"] = $_REQUEST["description"];
 	$ticket["responsables"] = [];
 	$ticket["status"] = "en attente...";
-	$ticket["start"] = "0000-00-00";
+	$ticket["start"] = sprintf("%04d-%02d-%02d", $date["year"], $date["mon"], $date["mday"]); //$date["year"] . "-" . $date["mon"] . "-" . $date["mday"];
 	$ticket["end"] = "0000-00-00";
 
 	$tickets->$id = $ticket;
