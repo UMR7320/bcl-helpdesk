@@ -90,7 +90,8 @@ function db_read() {
             tr.append($('<td>').text(field["type"]));
             tr.append($('<td>').text(field["objet"]));
             tr.append($('<td>').text(field["status"]));
-            tr.append('<i onclick="open_modal(\'#ticket_' + i + '\');" class="button-icon icon fa-edit"></i>');
+            tr.append($('<td>').append('<i onclick="open_modal(\'#ticket_' + i + '\');" class="button-icon icon fa-edit"></i>'));
+            tr.append($('<td>').append('<i onclick="db_delete(' + i + ');" class="button-icon icon fa-close"></i>'));
 
             $("#tickets").append(tr);
 
@@ -134,6 +135,19 @@ function db_update(id) {
             "status": status,
             "objet": objet,
             "description": description
+        }
+    ).done(function() {
+        db_read();
+        $(".modal-content, .modal-content > *, .submit-form, .submit-form > *").css({ 'cursor': 'default' });
+        $(".modal").hide();
+    });
+}
+
+function db_delete(id) {
+    $(".modal-content, .modal-content > *, .submit-form, .submit-form > *").css({ 'cursor': 'wait' })
+    $.post( "db.php", {
+            "action" : "delete", 
+            "id" : id
         }
     ).done(function() {
         db_read();

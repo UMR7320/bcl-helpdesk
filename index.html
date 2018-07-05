@@ -13,6 +13,8 @@
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+
+		<link rel="stylesheet" href="css/style.css" />
 	</head>
 	<body class="landing">
 
@@ -100,7 +102,7 @@
 									<br />
 									<textarea name="description" placeholder="Description détaillée de la demande"></textarea>
 									<br />
-									<a href="#developpement" class="button fit special" onclick="db_create('#developpement');">Déposer le ticket</a>
+									<a href="#developpement" class="button fit special" onclick="db_create('#developpement'); open_modal('#submit_modal');">Déposer le ticket</a>
 								</form>
 							</div>
 						</section>
@@ -124,7 +126,7 @@
 									<br />
 									<textarea name="description" placeholder="Description détaillée de la panne"></textarea>
 									<br />
-									<a href="#depannage" class="button fit special" onclick="db_create('#depannage');">Déposer le ticket</a>
+									<a href="#depannage" class="button fit special" onclick="db_create('#depannage'); open_modal('#submit_modal');">Déposer le ticket</a>
 								</form>
 							</div> 
 						</section>
@@ -148,7 +150,7 @@
 									<br />
 									<textarea name="description" placeholder="Description de la demande"></textarea>
 									<br />
-									<a href="#maintenance" class="button fit special" onclick="db_create('#maintenance');">Déposer le ticket</a>
+									<a href="#maintenance" class="button fit special" onclick="db_create('#maintenance'); open_modal('#submit_modal');">Déposer le ticket</a>
 								</form>
 							</div>
 						</section>
@@ -179,6 +181,16 @@
 
 			</div>
 
+		<div id='submit_modal' class='modal'>
+			<div class='button-icon modal-content'>
+				<span class="close" onclick="$('submit_modal').hide();">&times;</span>
+				<h4>Ticket ajouté</h4>
+				<p>Votre demande a été ajouté à la liste des tickets du service.</p>
+				<a href="" class="button fit" onclick="$('#submit_modal').hide();">Continuer</a>
+			</div>
+		</div>
+
+
 		<!-- Scripts -->
 			<script src="assets/js/jquery.min.js"></script>
 			<script src="assets/js/jquery.scrollex.min.js"></script>
@@ -189,6 +201,7 @@
 			<script src="assets/js/main.js"></script>
 
 			<script src="js/db.js"></script>
+			<script src="js/modal.js"></script>
 
 	</body>
 </html>

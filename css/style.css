@@ -21,6 +21,10 @@
     width: 80%; /* Could be more or less, depending on screen size */
 }
 
+.modal, .modal h4, .modal a {
+    color:black;   
+}
+
 /* The Close Button */
 .close {
     color: #aaa;

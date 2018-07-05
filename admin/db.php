@@ -25,6 +25,13 @@ if (isset($_REQUEST["action"]) && $_REQUEST["action"] == "update") {
 	$tickets->$id = $ticket;
 
 	file_put_contents("../db.json", json_encode($tickets));
+
+} else if (isset($_REQUEST["action"]) && $_REQUEST["action"] == "delete") {
+
+	$id = $_REQUEST["id"];
+	unset($tickets->$id);
+
+	file_put_contents("../db.json", json_encode($tickets));
 }
 
 ?>
