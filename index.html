@@ -29,7 +29,7 @@
 									<div id="menu">
 										<ul>
 											<li><a href="index.html">Accueil</a></li>
-											<li><a href="#one">Nouveau ticket</a></li>
+											<li><a href="#add_ticket">Nouveau ticket</a></li>
 											<li><a href="tickets.html">Tickets en cours</a></li>
 											<!-- <li><a href="#">Statistiques</a></li> -->
 										</ul>
@@ -47,11 +47,11 @@
 							<a href="http://bcl.cnrs.fr" target="_blank">Bases, Corpus, Langage</a><br />
 							Développement, Dépannage, Maintenance</p>
 						</div>
-						<a href="#one" class="more scrolly">Déposer un Ticket</a>
+						<a href="#add_ticket" class="more scrolly">Déposer un Ticket</a>
 					</section>
 
 				<!-- One -->
-					<section id="one" class="wrapper style1 special">
+					<section id="add_ticket" class="wrapper style1 special">
 						<div class="inner">
 							<header class="major">
 								<h2>Dans le cadre du service commun<br />
@@ -63,26 +63,26 @@
 									<br /><br />
 									<span class="label">Développement</span>
 									<br /><br />
-									<a href="#two" class="button">Faire une demande</a>
+									<a href="#developpement" class="button">Faire une demande</a>
 								</li>
 								<li><span class="icon fa-heartbeat major style2"></span>
 									<br /><br />
 									<span class="label">Dépannage</span>
 									<br /><br />
-									<a href="#three" class="button">Faire une demande</a>
+									<a href="#depannage" class="button">Faire une demande</a>
 								</li>
 								<li><span class="icon fa-gears major style1"></span>
 									<br /><br />
 									<span class="label">Maintenance</span>
 									<br /><br />
-									<a href="#four" class="button">Faire une demande</a>
+									<a href="#maintenance" class="button">Faire une demande</a>
 								</li>
 							</ul>
 						</div>
 					</section>
 
 				<!-- Two -->
-					<section id="two" class="wrapper alt style2">
+					<section id="developpement" class="wrapper alt style2">
 						<section class="spotlight">
 							
 							<div class="image"><img src="images/pic01.png" alt="" /></div>
@@ -90,56 +90,65 @@
 								<br/>
 								<h2>Développement Informatique</h2>
 								<p>Les développements proposés par le service informatique peuvent aller de la simple automatisation de tâches (formatage d'une feuille Excel, aide à création de corpus) jusqu'au développement d'applications lourdes en local ou sur le web.</p>
-								<form>
+								<form method="post" action="db.php" >
+
+									<input type="hidden" name="action" value="create" />
+									<input type="hidden" name="type" value="Développement" />
 									<input type="text" name="email" value="" placeholder="email" />
 									<br/>
 									<input type="text" name="objet" value="" placeholder="Objet de la demande" />
 									<br />
-									<textarea placeholder="Description détaillée de la demande"></textarea>
+									<textarea name="description" placeholder="Description détaillée de la demande"></textarea>
 									<br />
-									<a href="#four" class="button fit special">Déposer le ticket</a>
+									<a href="#" class="button fit special">Déposer le ticket</a>
 								</form>
 							</div>
 						</section>
 					</section>
 
 				<!-- Three -->
-					<section id="three" class="wrapper alt style1">
+					<section id="depannage" class="wrapper alt style1">
 						<section class="spotlight">
 							<div class="image"><img src="images/pic02.jpg" alt="" /></div>
 							<div class="content">
 								<br/>
 								<h2>Dépannage informatique</h2>
 								<p>Le dépannage proposé par le service informatique concèrne les cas de plantage sevère de machines ou de services numériques. Si vous êtes bloqué dans votre travail, déposez un ticket en utilsant le formalaire ci-dessous</p>
-								<form>
-									<input type="text" name="objet" value="" placeholder="email" />
+								<form method="post" action="db.php" >
+
+									<input type="hidden" name="action" value="create" />
+									<input type="hidden" name="type" value="Dépannage" />
+									<input type="text" name="email" value="" placeholder="email" />
 									<br/>
 									<input type="text" name="objet" value="" placeholder="Type de panne (virus, Bug, pb messagerie, ...)" />
 									<br />
-									<textarea placeholder="Description détaillée de la panne"></textarea>
+									<textarea name="description" placeholder="Description détaillée de la panne"></textarea>
 									<br />
-									<a href="#four" class="button fit special">Déposer le ticket</a>
+									<a href="#" class="button fit special">Déposer le ticket</a>
 								</form>
 							</div>
 						</section>
 					</section>
 
 					<!-- Four -->
-					<section id="four" class="wrapper alt style3">
+					<section id="maintenance" class="wrapper alt style3">
 						<section class="spotlight">
 							<div class="image"><img src="images/pic03.jpg" alt="" /></div>
 							<div class="content">
 								<br />
 								<h2>Maintenance du parc informatique</h2>
 								<p>Mises à jour logiciel nécéssaire ou achats de nouveaux materiels, le service informatique est responsable de la maintenance du parc informatique de BCL. Utilisez le formulaire pour demander une mise à jour ou faire un devis sur le marché courant (DELL, Apple).</p>
-								<form>
-									<input type="text" name="objet" value="" placeholder="email" />
+								<form method="post" action="db.php" >
+
+									<input type="hidden" name="action" value="create" />
+									<input type="hidden" name="type" value="Maintenance" />
+									<input type="text" name="email" value="" placeholder="email" />
 									<br/>
 									<input type="text" name="objet" value="" placeholder="Type de demande (Mise à jour, achat de materiel, ...)" />
 									<br />
-									<textarea placeholder="Description de la demande"></textarea>
+									<textarea name="description" placeholder="Description de la demande"></textarea>
 									<br />
-									<a href="#four" class="button fit special">Déposer le ticket</a>
+									<a href="#" class="button fit special">Déposer le ticket</a>
 								</form>
 							</div>
 						</section>
