@@ -28,6 +28,7 @@ if (isset($_REQUEST["action"]) && $_REQUEST["action"] == "create") {
 
 	file_put_contents("db.json", json_encode($tickets));
 
+	
 
 }
 
