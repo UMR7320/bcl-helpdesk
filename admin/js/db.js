@@ -12,7 +12,7 @@ function db_read() {
             modal += "<h4><i class='button-icon icon fa-edit'></i>&nbsp;Contenu du ticket</h4>";
 
             modal += "<label>Objet : </label><input id='objet" + i + "' type='text' value='" + field["objet"] + "' />";
-            modal += "<label>Description et commentaires: </label><textarea id='description" + i + "'>" + field["description"] + "</textarea>";
+            modal += "<label>Description: </label><textarea id='description" + i + "'>" + field["description"] + "</textarea>";
             modal += "<label>Contact : </label><input id='email" + i + "' type='text' value='" + field["email"] + "' />";
 
             modal += "<label>Debut : </label><input id='start" + i + "' type='text' value='" + field["start"] + "' />";
@@ -81,6 +81,8 @@ function db_read() {
             });
             modal += "</select>";
 
+            modal += "<label>Commentaires: </label><textarea id='commentaires" + i + "'>" + field["commentaires"] + "</textarea>";
+
             modal += '<br/><div class="submit-form"><a href="#four" class="button special"  onclick="db_update(' + i + ')">Mettre à jour le ticket</a></div>';
             modal += "</div>";
             modal += "</div>";
@@ -91,7 +93,7 @@ function db_read() {
             tr.append($('<td>').text(field["objet"]));
             tr.append($('<td>').text(field["status"]));
             tr.append($('<td>').append('<i onclick="open_modal(\'#ticket_' + i + '\');" class="button-icon icon fa-edit"></i>'));
-            tr.append($('<td>').append('<i onclick="db_delete(' + i + ');" class="button-icon icon fa-close"></i>'));
+            tr.append($('<td>').append('<i onclick="$(\'#delete_id\').val(' + i + '); open_modal(\'#delete_modal\');" class="button-icon icon fa-close"></i>'));
 
             $("#tickets").append(tr);
 
@@ -123,6 +125,7 @@ function db_update(id) {
     status = $("#status" + id).val();
     objet = $("#objet" + id).val();
     description = $("#description" + id).val();
+    commentaires = $("#commentaires" + id).val();
 
     $(".modal-content, .modal-content > *, .submit-form, .submit-form > *").css({ 'cursor': 'wait' })
     $.post( "db.php", {
@@ -134,7 +137,8 @@ function db_update(id) {
             "start": start,
             "status": status,
             "objet": objet,
-            "description": description
+            "description": description,
+            "commentaires": commentaires
         }
     ).done(function() {
         db_read();

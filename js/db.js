@@ -74,6 +74,7 @@ function db_create(id) {
         }
     ).done(function() {
         console.log("db updated!");
+        open_modal('#submitted_modal');
     });
 }
 

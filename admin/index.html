@@ -82,6 +82,17 @@
 
 			</div>
 
+		<div id='delete_modal' class='modal'>
+			<div class='button-icon modal-content'>
+				<span class="close" onclick="$('#delete_modal').hide();">&times;</span>
+				<input type="hidden" id="delete_id" value="" />
+				<h4>Effacer le ticket ?</h4>
+				<p>Attention cette operation est irréversible...</p>
+				<a href="" class="button fit special" onclick="db_delete($('#delete_id').val());">OK</a>
+				<a href="" class="button fit" onclick="$('#delete_modal').hide();">Annuler</a>
+			</div>
+		</div>
+
 		<!-- Scripts -->
 			<script src="../assets/js/jquery.min.js"></script>
 			<script src="../assets/js/jquery.scrollex.min.js"></script>

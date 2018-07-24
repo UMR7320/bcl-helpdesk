@@ -1,4 +1,5 @@
 <?php
+
 $to = "laurent.vanni@gmail.com";
 $subject = "un test de mail automatique";
 $txt = "Hello world!";
