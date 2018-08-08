@@ -1,3 +1,5 @@
+var current_tickets = {};
+
 /*
  * DB : Mangment functions
  */
@@ -6,6 +8,29 @@ function db_read() {
     $("#ticket_forms").empty();
 	$.getJSON("db.json", function(result){
         $.each(result, function(i, field){
+
+        	// -----------
+        	// FILTER VIEW
+        	if ($("#filter_annee").val() != "all") {
+        		annee = field["start"].split("-")[0];
+        		if (annee != $("#filter_annee").val()) {
+        			return;
+        		}
+        	}
+        	if ($("#filter_type").val() != "all") {
+        		type = field["type"];
+        		if (type != $("#filter_type").val()) {
+        			return;
+        		}
+        	}
+			if ($("#filter_status").val() != "all") {
+        		status = field["status"].split("-")[0];
+        		if (status != $("#filter_status").val()) {
+        			return;
+        		}
+        	}
+        	// -----------
+
             var modal = "<div id='ticket_" + i + "' class='modal'>";
 		    modal += "<div class='button-icon modal-content'>";
 		    modal += '<span class="close" onclick="$(\'#ticket_' + i + '\').hide();">&times;</span>';
@@ -78,6 +103,3 @@ function db_create(id) {
     });
 }
 
-$(document).ready(function() {
-	db_read();
-});

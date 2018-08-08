@@ -67,3 +67,19 @@
 .label2 {
     font-size:8pt;
 }
+
+.filter_box {
+    position: relative;
+    width: 20%;
+    float: left;
+    padding-bottom: 2em;
+    padding-right: 1em;
+ 
+}
+
+.myinner {
+    position: relative;
+    width: 60%;
+    left: 10%;
+    top: -4em;
+}

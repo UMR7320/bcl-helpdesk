@@ -35,15 +35,16 @@ if (isset($_REQUEST["action"]) && $_REQUEST["action"] == "create") {
 	$subject = "[BCL Ticket n°". $id ."] " . $_REQUEST["type"];
 	$txt = "Votre demande à bien été prise en compte. Vous pouvez suivre l'évolution de votre ticket à l'adresse : http://bcl.unice.fr/bcl-helpdesk/tickets.html?id=" . $id;
 	$headers = "From: bcl-service-info@unice.fr";
-	//mail($to,$subject,$txt,$headers);
+	mail($to,$subject,$txt,$headers);
 
 	// ------------------------------
 	// SEND EMAIL TO THE SERVICE INFO
-	$to = "bcl-service-info@unice.fr";
+	//$to = "bcl-service-info@unice.fr";
+	$to = "lvanni@unice.fr";
 	$subject = "[BCL Ticket n°". $id ."] " . $_REQUEST["type"];
 	$txt = "Un nouveau ticket a été déposé : http://bcl.unice.fr/bcl-helpdesk/admin.html?id=" . $id;
 	$headers = "From: bcl-service-info@unice.fr";
-	//mail($to,$subject,$txt,$headers);
+	mail($to,$subject,$txt,$headers);
 }
 
 ?>
