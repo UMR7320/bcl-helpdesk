@@ -4,6 +4,7 @@ var current_tickets = {};
  * DB : Mangment functions
  */
 function db_read() {
+	current_tickets = {};
 	$("#tickets").empty();
     $("#ticket_forms").empty();
 	$.getJSON("db.json", function(result){
@@ -30,6 +31,8 @@ function db_read() {
         		}
         	}
         	// -----------
+
+        	current_tickets[i] = field;
 
             var modal = "<div id='ticket_" + i + "' class='modal'>";
 		    modal += "<div class='button-icon modal-content'>";
@@ -81,6 +84,7 @@ function db_read() {
 
 		    $("#ticket_forms").append(modal);
         });
+        print_stats();
     });
 }
 
@@ -103,3 +107,36 @@ function db_create(id) {
     });
 }
 
+function print_stats() {
+
+	var total = 0;
+	var nb_dev = 0;
+	var nb_dep = 0;
+	var nb_main = 0;
+
+	$.each(current_tickets, function(i, field){
+		console.log(field["type"])
+		if (field["type"] == "Développement") {
+			nb_dev++;
+		} else if (field["type"] == "Dépannage") {
+			nb_dep++;
+		} else if (field["type"] == "Maintenance") {
+			nb_main++;
+		}
+		total++;
+	});
+
+	var data = [];
+	if (nb_dev > 0) {
+		data.push({"label":"Développement", "value":nb_dev/total});
+	}
+	if (nb_dep > 0) {
+		data.push({"label":"Dépannage", "value":nb_dep/total});
+	}
+	if (nb_main > 0) {
+		data.push({"label":"Maintenance", "value":nb_main/total});
+	}
+
+	draw_piechart(data);
+
+}

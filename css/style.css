@@ -83,3 +83,10 @@
     left: 10%;
     top: -4em;
 }
+
+.statistiques {
+    position: absolute;
+    width: 20%;
+    top: 540px;
+    right: 5%;
+}
