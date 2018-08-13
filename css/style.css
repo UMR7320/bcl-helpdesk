@@ -90,3 +90,18 @@
     top: 540px;
     right: 5%;
 }
+
+.line_chart {
+    font: 12px Arial;
+}
+.line_chart path {
+    stroke: steelblue;
+    stroke-width: 2;
+    fill: none;
+}
+.line_chart .axis path, .line_chart .axis line {
+    fill: none;
+    stroke: grey;
+    stroke-width: 1;
+    shape-rendering: crispEdges;
+}

@@ -108,7 +108,7 @@
 									<br />
 									<textarea name="description" placeholder="Description détaillée de la demande"></textarea>
 									<br />
-									<a href="#developpement" class="button fit special" onclick="db_create('#developpement'); open_modal('#submit_modal');">Déposer le ticket</a>
+									<a href="#developpement" class="button fit special" onclick="$('#submit_type').val('#developpement'); open_modal('#submit_modal');">Déposer le ticket</a>
 								</form>
 							</div>
 						</section>
@@ -132,7 +132,7 @@
 									<br />
 									<textarea name="description" placeholder="Description détaillée de la panne"></textarea>
 									<br />
-									<a href="#depannage" class="button fit special" onclick="db_create('#depannage'); open_modal('#submit_modal');">Déposer le ticket</a>
+									<a href="#depannage" class="button fit special" onclick="$('#submit_type').val('#depannage'); open_modal('#submit_modal');">Déposer le ticket</a>
 								</form>
 							</div> 
 						</section>
@@ -156,20 +156,11 @@
 									<br />
 									<textarea name="description" placeholder="Description de la demande"></textarea>
 									<br />
-									<a href="#maintenance" class="button fit special" onclick="open_modal('#submit_maintenance_modal');">Déposer le ticket</a>
+									<a href="#maintenance" class="button fit special" onclick="$('#submit_type').val('#maintenance'); open_modal('#submit_modal');">Déposer le ticket</a>
 								</form>
 							</div>
 						</section>
 					</section>
-					<div id='submit_maintenance_modal' class='modal'>
-						<div class='button-icon modal-content'>
-							<span class="close" onclick="$('submit_modal').hide();">&times;</span>
-							<h4>Déposer le ticket ?</h4>
-							<p>Vous êtes sur le point de déposer un ticket au service informatique.</p>
-							<a href="#maintenance" class="button fit" onclick="$('#submit_maintenance_modal').hide(); db_create('#maintenance');">Continuer</a>
-							<a href="" class="button fit" onclick="$('#submit_maintenance_modal').hide();">Annuler</a>
-						</div>
-					</div>
 
 				<!-- CTA -->
 					<section class="wrapper style4" style="text-align: center;">
@@ -191,11 +182,23 @@
 							<li><a href="index.html">Accueil</a></li>
 							<li><a href="http://bcl.cnrs.fr" target="_blank">UMR 7320</a> : Bases, Corpus, Langage</li>
 							<li>Responsable du service info : <a href="mailto:bcl-service-info_AT_unice_DOT_fr">Pierre-Aurélien GEORGES</a></li>
+							<li><a href="admin">Administration</a></li>
 						</ul>
 					</footer>
 
 			</div>
 
+		<!-- SUBMIT MODAL -->
+		<div id='submit_modal' class='modal'>
+			<input id="submit_type" type="hiden" value="" />
+			<div class='button-icon modal-content'>
+				<span class="close" onclick="$('submit_modal').hide();">&times;</span>
+				<h4>Déposer le ticket ?</h4>
+				<p>Vous êtes sur le point de déposer un ticket au service informatique.</p>
+				<a href="#maintenance" class="button fit" onclick="$('#submit_modal').hide(); db_create($('#submit_type').val());">Continuer</a>
+				<a href="" class="button fit" onclick="$('#submit_modal').hide();">Annuler</a>
+			</div>
+		</div>
 		<div id='submitted_modal' class='modal'>
 			<div class='button-icon modal-content'>
 				<span class="close" onclick="$('submitted_modal').hide();">&times;</span>

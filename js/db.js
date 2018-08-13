@@ -109,13 +109,31 @@ function db_create(id) {
 
 function print_stats() {
 
+	// Linechart data
+	var data = [];
+	date_array = {};
+	$.each(current_tickets, function(i, field){
+		date = field["start"].split("-");
+		date = date[1] + "-" + date[0];
+		date_array[date] =  (date_array[date] || 0) + 1;
+	});
+
+	$.each(date_array, function(d, n){
+		data.push({"date" : d, "close" : n});
+	});
+
+	console.log(data);
+
+	draw_linechart(data, "#ticket_chart");
+
+	// Piechart data
 	var total = 0;
 	var nb_dev = 0;
 	var nb_dep = 0;
 	var nb_main = 0;
 
 	$.each(current_tickets, function(i, field){
-		console.log(field["type"])
+		//console.log(field["type"])
 		if (field["type"] == "Développement") {
 			nb_dev++;
 		} else if (field["type"] == "Dépannage") {
@@ -136,7 +154,6 @@ function print_stats() {
 	if (nb_main > 0) {
 		data.push({"label":"Maintenance", "value":nb_main/total});
 	}
-
 	draw_piechart(data);
 
 }
