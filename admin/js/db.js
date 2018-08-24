@@ -133,10 +133,15 @@ function db_read() {
             modal += "</div>";
             modal += "</div>";
 
+            objet = field["objet"];
+            if (objet.length > 25) {
+                objet = objet.substring(0,25) + "...";
+            }
+
             var tr = $('<tr>');
             tr.append($('<td>').text(field["start"]));
             tr.append($('<td>').text(field["type"]));
-            tr.append($('<td>').text(field["objet"]));
+            tr.append($('<td>').text(objet));
             tr.append($('<td>').text(field["status"]));
             tr.append($('<td>').append('<i onclick="open_modal(\'#ticket_' + i + '\');" class="button-icon icon fa-edit"></i>'));
             tr.append($('<td>').append('<i onclick="$(\'#delete_id\').val(' + i + '); open_modal(\'#delete_modal\');" class="button-icon icon fa-close"></i>'));
