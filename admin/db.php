@@ -44,7 +44,7 @@ if (isset($_REQUEST["action"]) && $_REQUEST["action"] == "update") {
 	//$to = "bcl-service-info@unice.fr";
 	$to = "laurent.vanni@unice.fr";
 	$subject = "[BCL Ticket n°". $id ."] " . $_REQUEST["type"];
-	$txt = "Mise à jour du ticket : http://bcl.unice.fr/bcl-helpdesk/admin.html?id=" . $id;
+	$txt = "Mise à jour du ticket : http://bcl.unice.fr/bcl-helpdesk/admin/?id=" . $id;
 	$headers = "From: bcl-service-info@unice.fr";
 	mail($to,$subject,$txt,$headers);
 
