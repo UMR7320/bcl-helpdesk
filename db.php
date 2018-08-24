@@ -11,7 +11,7 @@ $ids = array_map('intval', $ids);
 
 if (isset($_REQUEST["action"]) && $_REQUEST["action"] == "create") {
 
-	$ticket = [];
+	$ticket = array();
 	$id = max($ids) + 1;
 	$date = getdate();
 
