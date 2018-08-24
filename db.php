@@ -39,8 +39,8 @@ if (isset($_REQUEST["action"]) && $_REQUEST["action"] == "create") {
 
 	// ------------------------------
 	// SEND EMAIL TO THE SERVICE INFO
-	//$to = "bcl-service-info@unice.fr";
-	$to = "lvanni@unice.fr";
+	$to = "bcl-service-info@unice.fr";
+	//$to = "lvanni@unice.fr";
 	$subject = "[BCL Ticket n°". $id ."] " . $_REQUEST["type"];
 	$txt = "Un nouveau ticket a été déposé : http://bcl.unice.fr/bcl-helpdesk/admin/?id=" . $id;
 	$headers = "From: bcl-service-info@unice.fr";
