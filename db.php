@@ -19,7 +19,7 @@ if (isset($_REQUEST["action"]) && $_REQUEST["action"] == "create") {
 	$ticket["email"] = $_REQUEST["email"];
 	$ticket["objet"] = $_REQUEST["objet"];
 	$ticket["description"] = $_REQUEST["description"];
-	$ticket["responsables"] = [];
+	$ticket["responsables"] = array();
 	$ticket["status"] = "En attente...";
 	$ticket["start"] = sprintf("%04d-%02d-%02d", $date["year"], $date["mon"], $date["mday"]); //$date["year"] . "-" . $date["mon"] . "-" . $date["mday"];
 	$ticket["end"] = "0000-00-00";
