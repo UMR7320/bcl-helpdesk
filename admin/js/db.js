@@ -146,7 +146,7 @@ function db_read() {
             tr.append($('<td>').append('<i onclick="open_modal(\'#ticket_' + i + '\');" class="button-icon icon fa-edit"></i>'));
             tr.append($('<td>').append('<i onclick="$(\'#delete_id\').val(' + i + '); open_modal(\'#delete_modal\');" class="button-icon icon fa-close"></i>'));
 
-            $("#tickets").append(tr);
+            $("#tickets").prepend(tr);
 
             $("#ticket_forms").append(modal);
         });

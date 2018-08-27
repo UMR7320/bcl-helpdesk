@@ -85,7 +85,7 @@ function db_read() {
 		    tr.append($('<td>').text(field["status"]));
 		    tr.append('<i onclick="open_modal(\'#ticket_' + i + '\');" class="button-icon icon fa-file"></i>');
 
-		    $("#tickets").append(tr);
+		    $("#tickets").prepend(tr);
 
 		    $("#ticket_forms").append(modal);
         });
