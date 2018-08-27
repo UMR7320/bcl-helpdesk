@@ -99,17 +99,22 @@ function db_create(id) {
 	email = $(id + " [name=email]").val();
     description = $(id + " [name=description]").val();
 
-    $.post( "db.php", {
-            "action" : "create", 
-            "type": type,
-            "objet": objet,
-            "email": email,
-            "description": description
-        }
-    ).done(function() {
-        console.log("db updated!");
-        open_modal('#submitted_modal');
-    });
+    if (!email || !objet || !description) {
+    	open_modal('#form_error_modal');
+
+    } else {
+	    $.post( "db.php", {
+	            "action" : "create", 
+	            "type": type,
+	            "objet": objet,
+	            "email": email,
+	            "description": description
+	        }
+	    ).done(function() {
+	        console.log("db updated!");
+	        open_modal('#submitted_modal');
+	    });
+	}
 }
 
 function print_stats() {
