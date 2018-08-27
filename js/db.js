@@ -51,7 +51,7 @@ function db_read() {
 		    for (var resp_i = 1; resp_i <= 3; resp_i++) {
 
 		        var nom_resp = "";
-		        var temps_resp = "";
+		        var temps_resp = "0";
 		        if (field["responsables"].length > resp_i-1) {
 		            responsable_args = field["responsables"][resp_i-1].split(":");
 		            nom_resp = responsable_args[0];

@@ -78,7 +78,7 @@ function db_read() {
             for (var resp_i = 1; resp_i <= 3; resp_i++) {
 
                 var nom_resp = "";
-                var temps_resp = "";
+                var temps_resp = "0";
                 if (field["responsables"].length > resp_i-1) {
                     responsable_args = field["responsables"][resp_i-1].split(":");
                     nom_resp = responsable_args[0];
@@ -227,8 +227,6 @@ function print_stats() {
         data.push({"date" : d, "close" : n});
     });
 
-    console.log(data);
-
     draw_linechart(data, "#ticket_chart");
 
     // Linechart data (nb heure)
@@ -251,6 +249,8 @@ function print_stats() {
     $.each(date_array, function(d, n){
         data.push({"date" : d, "close" : n});
     });
+
+    console.log(data);
 
     draw_linechart(data, "#heure_chart");
 
