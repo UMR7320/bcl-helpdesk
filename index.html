@@ -32,7 +32,7 @@
 										<ul>
 											<li><a href="index.html">Accueil</a></li>
 											<li><a href="#add_ticket">Nouveau ticket</a></li>
-											<li><a href="tickets.html">Tickets en cours</a></li>
+											<li><a href="tickets.html">Liste des tickets</a></li>
 											<!-- <li><a href="#">Statistiques</a></li> -->
 										</ul>
 									</div>
@@ -72,7 +72,7 @@
 									<br /><br />
 									<span class="label">Dépannage</span>
 									<br />
-									<span class="label2">bugs logiciels - problèmes réseaux - pannes matériels </span>
+									<span class="label2">bugs logiciels - problèmes réseaux - pannes matériel </span>
 									<br /><br />
 									<a href="#depannage" class="button">Faire une demande</a>
 								</li>
@@ -80,7 +80,7 @@
 									<br /><br />
 									<span class="label">Maintenance</span>
 									<br />
-									<span class="label2">mises à jour - achats matériels - autres </span>
+									<span class="label2">mises à jour - achat matériel - autres </span>
 									<br /><br />
 									<a href="#maintenance" class="button">Faire une demande</a>
 								</li>
@@ -120,7 +120,7 @@
 							<div class="content">
 								<br/>
 								<h2>Dépannage informatique</h2>
-								<p>Le dépannage proposé par le service informatique concèrne les cas de plantage sevère de machines ou de services numériques. Si vous êtes bloqué dans votre travail, déposez un ticket en utilsant le formalaire ci-dessous</p>
+								<p>Le dépannage proposé par le service informatique concerne les cas de plantage sévère de machines ou de services numériques. Si vous êtes bloqué dans votre travail, déposez un ticket en utilisant le formulaire ci-dessous</p>
 								<form id="depannage_form" method="post" action="db.php" >
 
 									<input type="hidden" name="action" value="create" />
@@ -144,7 +144,7 @@
 							<div class="content">
 								<br />
 								<h2>Maintenance du parc informatique</h2>
-								<p>Mises à jour logiciel nécéssaire ou achats de nouveaux materiels, le service informatique est responsable de la maintenance du parc informatique de BCL. Utilisez le formulaire pour demander une mise à jour ou faire un devis sur le marché courant (DELL, Apple).</p>
+								<p>Mise à jour logicielle, achat de nouveaux matériels, et tout ce qui concerne la gestion du parc informatique de BCL. Utilisez le formulaire pour demander par ex. la création d'un devis pour l'achat d'équipements informatiques sur les marchés publics actuels.</p>
 								<form id="maintenance_form" method="post" action="db.php" >
 
 									<input type="hidden" name="action" value="create" />
@@ -202,7 +202,7 @@
 				<span class="close" onclick="$('submitted_modal').hide();">&times;</span>
 				<h4>Ticket ajouté</h4>
 				<p>Votre demande a été ajouté à la liste des tickets du service.</p>
-				<a href="" class="button fit" onclick="$('#submitted_modal').hide();">Continuer</a>
+				<a href="" class="button fit" onclick="$('#submitted_modal').hide();">Fermer</a>
 			</div>
 		</div>
 
