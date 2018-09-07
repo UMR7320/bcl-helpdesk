@@ -51,7 +51,7 @@ function db_read() {
 		    for (var resp_i = 1; resp_i <= 3; resp_i++) {
 
 		        var nom_resp = "";
-		        var temps_resp = "";
+		        var temps_resp = "0";
 		        if (field["responsables"].length > resp_i-1) {
 		            responsable_args = field["responsables"][resp_i-1].split(":");
 		            nom_resp = responsable_args[0];
@@ -85,7 +85,7 @@ function db_read() {
 		    tr.append($('<td>').text(field["status"]));
 		    tr.append('<i onclick="open_modal(\'#ticket_' + i + '\');" class="button-icon icon fa-file"></i>');
 
-		    $("#tickets").append(tr);
+		    $("#tickets").prepend(tr);
 
 		    $("#ticket_forms").append(modal);
         });
@@ -99,17 +99,22 @@ function db_create(id) {
 	email = $(id + " [name=email]").val();
     description = $(id + " [name=description]").val();
 
-    $.post( "db.php", {
-            "action" : "create", 
-            "type": type,
-            "objet": objet,
-            "email": email,
-            "description": description
-        }
-    ).done(function() {
-        console.log("db updated!");
-        open_modal('#submitted_modal');
-    });
+    if (!email || !objet || !description) {
+    	open_modal('#form_error_modal');
+
+    } else {
+	    $.post( "db.php", {
+	            "action" : "create", 
+	            "type": type,
+	            "objet": objet,
+	            "email": email,
+	            "description": description
+	        }
+	    ).done(function() {
+	        console.log("db updated!");
+	        open_modal('#submitted_modal');
+	    });
+	}
 }
 
 function print_stats() {

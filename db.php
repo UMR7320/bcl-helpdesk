@@ -39,6 +39,7 @@ if (isset($_REQUEST["action"]) && $_REQUEST["action"] == "create") {
 	// ------------------------------
 	// SEND EMAIL TO THE SERVICE INFO
 	send_mail_to_admins($id, $ticket, "Un nouveau ticket a été déposé");
+
 }
 
 ?>
