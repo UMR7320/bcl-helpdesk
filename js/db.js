@@ -34,12 +34,15 @@ function db_read() {
 
         	current_tickets[i] = field;
 
+        	// QUOTE ESCAPE BUG
+            field["objet"] = field["objet"].replace("'", "’")
+
             var modal = "<div id='ticket_" + i + "' class='modal'>";
 		    modal += "<div class='button-icon modal-content'>";
 		    modal += '<span class="close" onclick="$(\'#ticket_' + i + '\').hide();">&times;</span>';
 		    modal += "<h4><i class='button-icon icon fa-edit'></i>&nbsp;Contenu du ticket</h4>";
 
-		    modal += "<label>Objet : </label><input disabled id='objet" + i + "' type='text' value='" + field["objet"].replace(/'/g, "\\'"); + "' />";
+		    modal += "<label>Objet : </label><input disabled id='objet" + i + "' type='text' value='" + field["objet"]; + "' />";
 		    modal += "<label>Description et commentaires: </label><textarea disabled id='description" + i + "'>" + field["description"] + "</textarea>";
 		    modal += "<label>Contact : </label><input disabled id='email" + i + "' type='text' value='" + field["email"] + "' />";
 
