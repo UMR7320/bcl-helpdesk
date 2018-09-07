@@ -57,7 +57,7 @@ function db_read() {
             modal += '<span class="close" onclick="$(\'#ticket_' + i + '\').hide();">&times;</span>';
             modal += "<h4><i class='button-icon icon fa-edit'></i>&nbsp;Contenu du ticket n°" + i + "</h4>";
 
-            modal += "<label>Objet : </label><input id='objet" + i + "' type='text' value='" + field["objet"] + "' />";
+            modal += "<label>Objet : </label><input id='objet" + i + "' type='text' value='" + field["objet"].replace(/'/g, "\\'"); + "' />";
             modal += "<label>Description: </label><textarea id='description" + i + "'>" + field["description"] + "</textarea>";
             modal += "<label>Contact : </label><input id='email" + i + "' type='text' value='" + field["email"] + "' />";
 
