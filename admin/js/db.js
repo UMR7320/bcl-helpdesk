@@ -53,7 +53,7 @@ function db_read() {
             current_tickets[i] = field;
 
             // QUOTE ESCAPE BUG
-            field["objet"] = field["objet"].replace("'", "’")
+            field["objet"] = field["objet"].replace("'", "’");
 
             var modal = "<div id='ticket_" + i + "' class='modal'>";
             modal += "<div class='button-icon modal-content'>";
