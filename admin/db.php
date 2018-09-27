@@ -32,15 +32,14 @@ if (isset($_REQUEST["action"]) && $_REQUEST["action"] == "update") {
 		// ----------------------
 		// SEND EMAIL TO THE USER
 		send_mail_to_user($id, $ticket);
+
+		// ------------------------------
+		// SEND EMAIL TO THE SERVICE INFO
+		send_mail_to_admins($id, $ticket);
 	}
 
 	$tickets->$id = $ticket;
-
 	file_put_contents("../db.json", json_encode($tickets));
-
-	// ------------------------------
-	// SEND EMAIL TO THE SERVICE INFO
-	send_mail_to_admins($id, $ticket);
 
 } else if (isset($_REQUEST["action"]) && $_REQUEST["action"] == "delete") {
 
