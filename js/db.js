@@ -77,10 +77,14 @@ function print_stats() {
 		date = date[1] + "-" + date[0];
 		date_array[date] =  (date_array[date] || 0) + 1;
 	});
+    dates = Object.keys(date_array);
+    dates.sort();
 
-	$.each(date_array, function(d, n){
-		data.push({"date" : d, "close" : n});
-	});
+    $.each(dates, function(i, d){
+        console.log(d);
+        n = date_array[d];
+        data.push({"date" : d, "close" : n});
+    });
 
 	console.log(data);
 

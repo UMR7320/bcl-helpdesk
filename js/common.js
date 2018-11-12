@@ -36,7 +36,7 @@ function create_admin_modal(i, field) {
         modal += "<label>Responsable" + resp_i + " : </label>";
         modal += "<select id='responsables" + resp_i + "_" + i + "' class='responsables' style='width:75%;'>Type : </label>";
         modal += "<option value=''></option>";
-        $.each(["Carlos", "Laurent", "Pierre-Aurélien"], function(i, nom){
+        $.each(["Laurent", "Pierre-Aurélien"], function(i, nom){
             if (nom == nom_resp) {
                 modal += "<option value='" + nom + "' selected>" + nom + "</option>";
             } else {
