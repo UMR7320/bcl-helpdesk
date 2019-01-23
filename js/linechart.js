@@ -11,7 +11,7 @@ function draw_linechart(data, target) {
 	var width = 250;
 	var height = 200;
 
-	var parseDate = d3.time.format("%m-%Y").parse;
+	var parseDate = d3.time.format("%Y-%m").parse;
 
 	var x = d3.time.scale().range([0, width]);
 	var y = d3.scale.linear().range([height, 0]);

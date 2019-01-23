@@ -124,7 +124,7 @@ function print_stats() {
     date_array = {};
     $.each(current_tickets, function(i, field){
         date = field["start"].split("-");
-        date = date[1] + "-" + date[0];
+        date = date[0] + "-" + date[1];
         date_array[date] =  (date_array[date] || 0) + 1;
     });
     dates = Object.keys(date_array);
@@ -151,15 +151,19 @@ function print_stats() {
             }
         }   
         date = field["start"].split("-");
-        date = date[1] + "-" + date[0];
+        date = date[0] + "-" + date[1];
         date_array[date] = (date_array[date] || 0) + temps_resp;
     });
-    $.each(date_array, function(d, n){
+    dates = Object.keys(date_array);
+    dates.sort();
+
+    $.each(dates, function(i, d){
+        console.log(d);
+        n = date_array[d];
         data.push({"date" : d, "close" : n});
     });
 
     console.log(data);
-
     draw_linechart(data, "#heure_chart");
 
     // Piechart data
