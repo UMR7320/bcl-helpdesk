@@ -6,7 +6,7 @@ function mail_utf8($to, $subject = '(No subject)', $message = '', $header = '') 
   mail($to, '=?UTF-8?B?'.base64_encode($subject).'?=', $message, $header_ . $header);
 }
 
-function send_mail_to_user($id, $ticket, $what_changed = "Votre ticket à été mis à jour. Vous pouvez le consulter à l'adresse") {
+function send_mail_to_user($id, $ticket, $what_changed = "Votre ticket a été mis à jour. Vous pouvez le consulter à l'adresse") {
 	$to = $ticket->email;
 	$subject = "[BCL Ticket n°". $id ."] " . $ticket->objet;
 	$txt = $what_changed . " : http://bcl.unice.fr/bcl-helpdesk/tickets.html?id=" . $id;
