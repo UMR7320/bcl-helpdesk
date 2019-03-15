@@ -1,4 +1,4 @@
-vvar current_tickets = {};
+var current_tickets = {};
 
 /*
  * DB : Mangment functions
