@@ -23,6 +23,7 @@ if (isset($_REQUEST["action"]) && $_REQUEST["action"] == "update") {
 	$ticket->responsables = json_decode($_REQUEST["responsables"]);
 	$ticket->start = $_REQUEST["start"];
 	$ticket->status = $_REQUEST["status"];
+	$ticket->type = $_REQUEST["type"];
 	$ticket->description = $_REQUEST["description"];
 	$ticket->commentaires = $_REQUEST["commentaires"];
 

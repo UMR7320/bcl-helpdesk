@@ -84,6 +84,8 @@ function db_update(id) {
     description = $("#description" + id).val();
     commentaires = $("#commentaires" + id).val();
 
+    console.log(type);
+
     $(".modal-content, .modal-content > *, .submit-form, .submit-form > *").css({ 'cursor': 'wait' })
     $.post( "db.php", {
             "action" : "update", 
