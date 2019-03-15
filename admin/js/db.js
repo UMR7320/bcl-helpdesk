@@ -131,7 +131,7 @@ function print_stats() {
     dates.sort();
 
     $.each(dates, function(i, d){
-        console.log(d);
+        //console.log(d);
         n = date_array[d];
         data.push({"date" : d, "close" : n});
     });
@@ -144,7 +144,7 @@ function print_stats() {
     $.each(current_tickets, function(i, field){
         var temps_resp = 0;
         for (var resp_i = 1; resp_i <= 3; resp_i++) { 
-            if (field["responsables"].length > resp_i-1) {                   
+            if (field["responsables"].length > resp_i-1) {
                 responsable_args = field["responsables"][resp_i-1].split(":");
                 nom_resp = responsable_args[0];
                 temps_resp += parseInt(responsable_args[1]);
@@ -158,12 +158,12 @@ function print_stats() {
     dates.sort();
 
     $.each(dates, function(i, d){
-        console.log(d);
+        //console.log(d);
         n = date_array[d];
         data.push({"date" : d, "close" : n});
     });
 
-    console.log(data);
+    //console.log(data);
     draw_linechart(data, "#heure_chart");
 
     // Piechart data

@@ -1,4 +1,4 @@
-var current_tickets = {};
+vvar current_tickets = {};
 
 /*
  * DB : Mangment functions
@@ -119,5 +119,4 @@ function print_stats() {
 		data.push({"label":"Maintenance", "value":nb_main/total});
 	}
 	draw_piechart(data);
-
 }
