@@ -7,7 +7,7 @@ function db_read() {
 	current_tickets = {};
 	$("#tickets").empty();
     $("#ticket_forms").empty();
-	$.getJSON("db.json", function(result){
+	$.getJSON("db.json?" + new Date().getTime(), function(result){
         $.each(result, function(i, field){
 
         	// -----------
