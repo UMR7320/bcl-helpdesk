@@ -117,6 +117,6 @@ function print_stats() {
 
 $("document").ready(function(){
     $(".file-input").change(function(){
-        $(".file-label").text($(".file-input").length + " fichiers");
+        $(".file-label").text(this.files.length + " fichiers");
     });
 });
