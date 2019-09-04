@@ -114,3 +114,9 @@ function print_stats() {
 	}
 	draw_piechart(data);
 }
+
+$("document").ready(function(){
+    $(".file-input").change(function(){
+        $(".file-label").text($(".file-input").length + " fichiers");
+    });
+});

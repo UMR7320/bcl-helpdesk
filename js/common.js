@@ -159,6 +159,8 @@ function create_ticket_entry(ticket_id, field, admin=false) {
     $("#ticket_forms").append(modal);
 }
 
+
+
 // TO AVOID CACHE BUG ON READ
 //$(document).ready(function() {
 // $.ajaxSetup({ cache: false });
