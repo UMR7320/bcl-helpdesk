@@ -44,27 +44,21 @@ function db_read() {
 }
 
 function db_create(id) {
-	type = $(id + " [name=type]").val();
-    objet = $(id + " [name=objet]").val();
-	email = $(id + " [name=email]").val();
-    description = $(id + " [name=description]").val();
+	var form = $(id + '_form')[0];
+	var formData = new FormData(form);// get the form data
 
-    if (!email || !objet || !description) {
-    	open_modal('#form_error_modal');
-
-    } else {
-	    $.post( "db.php", {
-	            "action" : "create", 
-	            "type": type,
-	            "objet": objet,
-	            "email": email,
-	            "description": description
-	        }
-	    ).done(function() {
-	        console.log("db updated!");
-	        open_modal('#submitted_modal');
-	    });
-	}
+	// on envoi formData vers mail.php
+	$.ajax({
+		type		: 'POST', // define the type of HTTP verb we want to use (POST for our form)
+		url		    : 'db.php', // the url where we want to POST
+		data		: formData, // our data object
+		dataType	: 'text', // what type of data do we expect back from the server
+		processData: false,
+		contentType: false
+	}).done(function() {
+        console.log("db updated!");
+        open_modal('#submitted_modal');
+    });
 }
 
 function print_stats() {

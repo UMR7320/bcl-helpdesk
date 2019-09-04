@@ -97,7 +97,7 @@
 								<br/>
 								<h2>Développement Informatique</h2>
 								<p>Les développements proposés par le service informatique peuvent aller de la simple automatisation de tâches (formatage d'une feuille Excel, aide à création de corpus) jusqu'au développement d'applications lourdes en local ou sur le web.</p>
-								<form id="developpement_form" method="post" action="db.php" >
+								<form id="developpement_form" method="post" action="db.php"  enctype="multipart/form-data">
 
 									<input type="hidden" name="action" value="create" />
 									<input type="hidden" name="type" value="Développement" />
@@ -107,6 +107,12 @@
 									<br />
 									<textarea name="description" placeholder="Description détaillée de la demande"></textarea>
 									<br />
+									<!-- upload button -->
+									<div class="upload-btn-wrapper">
+									  <button class="button fit">Joindre des documents</button>
+									  <input type="file" name="doc[]" multiple/>
+									</div>
+
 									<a href="#developpement" class="button fit special" onclick="$('#submit_type').val('#developpement'); open_modal('#submit_modal');">Déposer le ticket</a>
 								</form>
 							</div>
@@ -131,6 +137,11 @@
 									<br />
 									<textarea name="description" placeholder="Description détaillée de la panne"></textarea>
 									<br />
+									<!-- upload button -->
+									<div class="upload-btn-wrapper">
+									  <button class="button fit">Joindre des documents</button>
+									  <input type="file" name="doc[]" multiple/>
+									</div>
 									<a href="#depannage" class="button fit special" onclick="$('#submit_type').val('#depannage'); open_modal('#submit_modal');">Déposer le ticket</a>
 								</form>
 							</div> 
@@ -154,7 +165,13 @@
 									<input type="text" name="objet" value="" placeholder="Type de demande (Mise à jour, achat de materiel, ...)" />
 									<br />
 									<textarea name="description" placeholder="Description de la demande"></textarea>
-									<br />
+									<br />	
+									<!-- upload button -->
+									<div class="upload-btn-wrapper">
+									  <button class="button fit">Joindre des documents</button>
+									  <input type="file" name="doc[]" multiple/>
+									</div>
+			
 									<a href="#maintenance" class="button fit special" onclick="$('#submit_type').val('#maintenance'); open_modal('#submit_modal');">Déposer le ticket</a>
 								</form>
 							</div>
@@ -193,7 +210,7 @@
 				<span class="close" onclick="$('submit_modal').hide();">&times;</span>
 				<h4>Déposer le ticket ?</h4>
 				<p>Vous êtes sur le point de déposer un ticket au service informatique.</p>
-				<a href="#maintenance" class="button fit" onclick="$('#submit_modal').hide(); db_create($('#submit_type').val());">Continuer</a>
+				<a href="#" class="button fit" onclick="$('#submit_modal').hide(); db_create($('#submit_type').val());">Continuer</a>
 				<a href="" class="button fit" onclick="$('#submit_modal').hide();">Annuler</a>
 			</div>
 		</div>

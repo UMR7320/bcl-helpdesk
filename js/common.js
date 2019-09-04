@@ -63,6 +63,15 @@ function create_admin_modal(i, field) {
     });
     modal += "</select>";
     modal += "<label>Commentaires: </label><textarea id='commentaires" + i + "'>" + field["commentaires"] + "</textarea>";
+
+    // LECTURE DES FICHIERS JOINTS
+    if(field["files"] && field["files"].length > 0) {
+        modal += "<label>Fichiers joints : </label><br />";
+        $.each(field["files"], function(i, file){
+            modal += "<a href='uploads/" + file + "' target='_blank'>" + file + "</a><br />";
+        });
+    }
+
     modal += '<br/><div class="submit-form"><a href="#four" class="button special"  onclick="db_update(' + i + ')">Mettre à jour le ticket</a></div>';
     modal += "</div>";
     modal += "</div>";

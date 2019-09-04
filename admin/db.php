@@ -30,13 +30,15 @@ if (isset($_REQUEST["action"]) && $_REQUEST["action"] == "update") {
 	if($_REQUEST["status"] == "Terminé") {
 		$ticket->end = sprintf("%04d-%02d-%02d", $date["year"], $date["mon"], $date["mday"]);
 
-		// ----------------------
-		// SEND EMAIL TO THE USER
-		send_mail_to_user($id, $ticket);
+		if ($_SERVER['SERVER_ADDR'] != "::1") { 
+			// ----------------------
+			// SEND EMAIL TO THE USER
+			send_mail_to_user($id, $ticket);
 
-		// ------------------------------
-		// SEND EMAIL TO THE SERVICE INFO
-		send_mail_to_admins($id, $ticket);
+			// ------------------------------
+			// SEND EMAIL TO THE SERVICE INFO
+			send_mail_to_admins($id, $ticket);
+		}
 	}
 
 	$tickets->$id = $ticket;
