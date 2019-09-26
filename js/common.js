@@ -129,6 +129,7 @@ function create_ticket_entry(ticket_id, field, admin=false) {
 
     // QUOTE ESCAPE BUG
     field["objet"] = field["objet"].replace("'", "’");
+    field["objet"] = field["objet"].replace("'", "’");
     
     // CREATE MODAL
     if (admin) {
