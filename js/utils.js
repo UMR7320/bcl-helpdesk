@@ -20,4 +20,12 @@ $(document).ready(function() {
 			$('table').tablesorter();
 	}, 300);
 
+	// SET DATE SELECTION RANGE
+    var currentYear = new Date().getFullYear(), years = [];
+    startYear = 2018;  
+    while ( startYear <= currentYear ) {
+        $("#filter_annee").append("<option value='"+startYear+"'>"+startYear+"</option>");
+        startYear++;
+    }   
+
 });
