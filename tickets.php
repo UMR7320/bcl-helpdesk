@@ -63,7 +63,7 @@ function getRealIpAddr()
 						</nav>
 					</header>
 
-				<?php if (strpos("10.75.", getRealIpAddr()) === false) { ?>
+				<?php if (strpos(getRealIpAddr(), "10.75.") === false) { ?>
 
 					<!-- RESTRICTED AREA MODAL -->
 					<div id='restricted_modal' class='modal'>
