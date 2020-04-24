@@ -42,7 +42,7 @@
 						</nav>
 					</header>
 
-				<?php if (strpos("134.59.75.", $_SERVER['REMOTE_ADDR']) === false) { ?>
+				<?php if (strpos("134.59.", $_SERVER['REMOTE_ADDR']) === false) { ?>
 
 					<!-- RESTRICTED AREA MODAL -->
 					<div id='restricted_modal' class='modal'>
