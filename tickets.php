@@ -16,6 +16,7 @@ function getRealIpAddr()
     }
     return $ip;
 }
+$unknown_ip = strpos(getRealIpAddr(), "10.75.129") === false && strpos(getRealIpAddr(), "134.59.75.") === false;
 
 ?>
 
@@ -63,7 +64,7 @@ function getRealIpAddr()
 						</nav>
 					</header>
 
-				<?php if (strpos(getRealIpAddr(), "10.75.129") === false && strpos(getRealIpAddr(), "134.59.75.") === false) { ?>
+				<?php if ($unknown_ip) { ?>
 
 					<!-- RESTRICTED AREA MODAL -->
 					<div id='restricted_modal' class='modal'>
@@ -73,7 +74,7 @@ function getRealIpAddr()
 							<a href="index.html" class="button fit">Continuer</a>
 						</div>
 					</div>
-					<script type="text/javascript">var open_modal = true;</script>
+
 				<?php } else { ?>
 
 					<!-- Main -->
@@ -138,22 +139,20 @@ function getRealIpAddr()
 				<?php } ?>
 
 				<!-- Footer -->
-					<footer id="footer">
-						<ul class="icons">
-							<li><a href="index.html#developpement" class="icon fa-code"><span class="label">Développement</span></a></li>
-							<li><a href="index.html#depannage" class="icon fa-heartbeat"><span class="label">Dépannage</span></a></li>
-							<li><a href="index.html#maintenance" class="icon fa-gears"><span class="label">Maintenance</span></a></li>
-						</ul>
-						<ul class="copyright">
-							<li><a href="index.html">Accueil</a></li>
-							<li><a href="http://bcl.cnrs.fr" target="_blank">UMR 7320</a> : Bases, Corpus, Langage</li>
-							<li><a href="admin">Administration</a></li>
-						</ul>
-					</footer>
+				<footer id="footer">
+					<ul class="icons">
+						<li><a href="index.html#developpement" class="icon fa-code"><span class="label">Développement</span></a></li>
+						<li><a href="index.html#depannage" class="icon fa-heartbeat"><span class="label">Dépannage</span></a></li>
+						<li><a href="index.html#maintenance" class="icon fa-gears"><span class="label">Maintenance</span></a></li>
+					</ul>
+					<ul class="copyright">
+						<li><a href="index.html">Accueil</a></li>
+						<li><a href="http://bcl.cnrs.fr" target="_blank">UMR 7320</a> : Bases, Corpus, Langage</li>
+						<li><a href="admin">Administration</a></li>
+					</ul>
+				</footer>
 
 			</div>
-
-
 
 		<!-- Scripts -->
 		<script src="assets/js/jquery.min.js"></script>
@@ -165,20 +164,21 @@ function getRealIpAddr()
 		<script src="assets/js/main.js"></script>
 		<script src="lib/__jquery.tablesorter/jquery.tablesorter.js"></script>
 		<script src="lib/d3/d3.min.js"></script>
-
 		<script src="js/modal.js"></script>
-		<script src="js/utils.js"></script>
-		<script src="js/piechart.js"></script>
-		<script src="js/linechart.js"></script>
-		<script src="js/common.js"></script>
-		<script src="js/db.js"></script>
-		<script type="text/javascript">
-			if (open_modal) {
+
+		<?php if ($unknown_ip) { ?>
+			<script type="text/javascript">
 				$(document).ready(function() {
 					open_modal("#restricted_modal"); 
 				});
-			}
-		</script>
+			</script>
+		<?php } else { ?>
+			<script src="js/utils.js"></script>
+			<script src="js/piechart.js"></script>
+			<script src="js/linechart.js"></script>
+			<script src="js/common.js"></script>
+			<script src="js/db.js"></script>
+		<?php } ?>
 
 	</body>
 </html>
