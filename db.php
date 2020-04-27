@@ -2,16 +2,18 @@
 
 include_once("inc/send_mail.php");
 
-// DISPLAY ERROR
+// DISPLAY ERROR FOR DEV ON LOCALHOST
 if ($_SERVER['SERVER_ADDR'] == "::1") { // localhost
 	error_reporting(E_ALL);
 	ini_set('display_errors', '1');
 }
 
+// GET THE DB
 $tickets = json_decode(file_get_contents("db.json"));
 $ids = array_keys(get_object_vars($tickets));
 $ids = array_map('intval', $ids);
 
+// CREATE FORM => NEW TICKET
 if (isset($_REQUEST["action"]) && $_REQUEST["action"] == "create") {
 
 	$ticket = new stdClass();
@@ -24,20 +26,17 @@ if (isset($_REQUEST["action"]) && $_REQUEST["action"] == "create") {
 	$ticket->description = $_REQUEST["description"];
 	$ticket->responsables = array();
 	$ticket->status = "En attente...";
-	$ticket->start = sprintf("%04d-%02d-%02d", $date["year"], $date["mon"], $date["mday"]); //$date["year"] . "-" . $date["mon"] . "-" . $date["mday"];
+	$ticket->start = sprintf("%04d-%02d-%02d", $date["year"], $date["mon"], $date["mday"]); 
 	$ticket->end = "0000-00-00";
 	$ticket->commentaires = "";
 
-	// GESTION DE FICHIERS JOINTS
+	// ATTACHED FILES
 	$ticket->files = array();
 	$uploads_dir = 'admin/uploads';
 	foreach ($_FILES["doc"]["error"] as $key => $error) {
 	    if ($error == UPLOAD_ERR_OK) {
 	        $tmp_name = $_FILES["doc"]["tmp_name"][$key];
-	        // basename() peut empêcher les attaques de système de fichiers;
-	        // la validation/assainissement supplémentaire du nom de fichier peut être approprié
 	        $name = basename($_FILES["doc"]["name"][$key]);
-	        // ajout d'un prefix pour l'indexation et le tri
 	        $name = "doc" . $id . "_" . $name;
 	        move_uploaded_file($tmp_name, "$uploads_dir/$name");
 	        array_push($ticket->files, "$name");
@@ -47,6 +46,7 @@ if (isset($_REQUEST["action"]) && $_REQUEST["action"] == "create") {
 	$tickets->$id = $ticket;
 	file_put_contents("db.json", json_encode($tickets));
 
+	// DISABLE EMAIL NOTIFICATION ON LOCALHOST => for dev
 	if ($_SERVER['SERVER_ADDR'] != "::1") { 
 		// ----------------------
 		// SEND EMAIL TO THE USER

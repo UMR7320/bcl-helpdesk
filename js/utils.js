@@ -1,3 +1,12 @@
+/*
+ * OPEN MODAL FUNCTION
+ */ 
+function open_modal(id) {
+    $(".modal").hide();
+    $(id).slideDown();
+}
+
+// GET URL PARAMETERS
 $.urlParam = function(name){
     var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
     if (results==null){
@@ -8,17 +17,24 @@ $.urlParam = function(name){
     }
 }
 
+/*
+ * DOCUMENT READY OPERATIONS
+ */ 
 $(document).ready(function() {
+    // READ DATABASE
 	db_read();
+
+    // SORT TABLE OF TICKETS VIEW    
+    setTimeout(function(){ 
+        $('table').tablesorter();
+    }, 300);
+
+    // OPEN TICKET MODAL IF ID PARAM EXIST
 	if ($.urlParam("id")) {
 		setTimeout(function(){ 
 			open_modal("#ticket_" + $.urlParam("id")); 
 		}, 300);
 	}
-
-	setTimeout(function(){ 
-			$('table').tablesorter();
-	}, 300);
 
 	// SET DATE SELECTION RANGE
     var currentYear = new Date().getFullYear(), years = [];
@@ -28,4 +44,10 @@ $(document).ready(function() {
         startYear++;
     }   
 
+    // UPDATE LABEL OF FILE INPUT
+    $(".file-input").change(function(){
+        $(".file-label").text(this.files.length + " fichiers");
+    });
+
 });
+

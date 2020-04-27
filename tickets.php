@@ -1,5 +1,6 @@
 <?php 
 
+// Check the IP of the client
 function getRealIpAddr()
 {
     if (!empty($_SERVER['HTTP_CLIENT_IP']))   //check ip from share internet
@@ -16,8 +17,12 @@ function getRealIpAddr()
     }
     return $ip;
 }
-$unknown_ip = strpos(getRealIpAddr(), "10.75.129") === false && strpos(getRealIpAddr(), "134.59.75.") === false;
 
+// For restricted area => only university IPs or VPN
+$RealIpAddr = getRealIpAddr();
+$unknown_ip = strpos(getRealIpAddr(), "10.75.129") === false && 
+strpos($RealIpAddr, "134.59.75.") === false && 
+$RealIpAddr !== "::1";
 ?>
 
 <!DOCTYPE HTML>
@@ -56,7 +61,6 @@ $unknown_ip = strpos(getRealIpAddr(), "10.75.129") === false && strpos(getRealIp
 											<li><a href="index.html">Accueil</a></li>
 											<li><a href="index.html#add_ticket">Nouveau ticket</a></li>
 											<li><a href="tickets.php">Tickets en cours</a></li>
-											<!-- <li><a href="#">Statistiques</a></li> -->
 										</ul>
 									</div>
 								</li>
@@ -85,6 +89,15 @@ $unknown_ip = strpos(getRealIpAddr(), "10.75.129") === false && strpos(getRealIp
 							</header>
 							<section class="wrapper style5">
 								<div class="myinner">
+
+									<div class="statistiques">
+										<label>Nombre de tickets</label>
+										<div id="ticket_chart" class="line_chart"></div>
+										<br /><br />
+										<label>Répartition</label>
+										<div id="type_chart"></div>
+									</div>
+
 									<div class="filter_box" style="width: auto; top:0.5em;">
 										<label>Filtrer par : </label>
 									</div>
@@ -124,14 +137,6 @@ $unknown_ip = strpos(getRealIpAddr(), "10.75.129") === false && strpos(getRealIp
 
 								</div>
 
-								<div class="statistiques">
-									<label>Nombre de tickets</label>
-									<div id="ticket_chart" class="line_chart"></div>
-									<br /><br />
-									<label>Répartition</label>
-									<div id="type_chart"></div>
-								</div>
-
 								<div id="ticket_forms"></div>
 
 							</section>
@@ -164,12 +169,12 @@ $unknown_ip = strpos(getRealIpAddr(), "10.75.129") === false && strpos(getRealIp
 		<script src="assets/js/main.js"></script>
 		<script src="lib/__jquery.tablesorter/jquery.tablesorter.js"></script>
 		<script src="lib/d3/d3.min.js"></script>
-		<script src="js/modal.js"></script>
 
 		<?php if ($unknown_ip) { ?>
 			<script type="text/javascript">
 				$(document).ready(function() {
-					open_modal("#restricted_modal"); 
+					// OPEN MODAL
+   					$("#restricted_modal").slideDown();
 				});
 			</script>
 		<?php } else { ?>

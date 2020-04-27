@@ -8,10 +8,12 @@ if ($_SERVER['SERVER_ADDR'] == "::1") { // localhost
 	ini_set('display_errors', '1');
 }
 
+// GET THE DB
 $tickets = json_decode(file_get_contents("../db.json"));
 $ids = array_keys(get_object_vars($tickets));
 $ids = array_map('intval', $ids);
 
+// UPDATE FORM
 if (isset($_REQUEST["action"]) && $_REQUEST["action"] == "update") {
 
 	$id = $_REQUEST["id"];
@@ -44,6 +46,7 @@ if (isset($_REQUEST["action"]) && $_REQUEST["action"] == "update") {
 	$tickets->$id = $ticket;
 	file_put_contents("../db.json", json_encode($tickets));
 
+// DELETE FORM
 } else if (isset($_REQUEST["action"]) && $_REQUEST["action"] == "delete") {
 
 	$id = $_REQUEST["id"];
