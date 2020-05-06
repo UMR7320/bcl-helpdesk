@@ -183,6 +183,11 @@ $RealIpAddr !== "::1";
 			<script src="js/linechart.js"></script>
 			<script src="js/common.js"></script>
 			<script src="js/db.js"></script>
+			<script type="text/javascript">
+				$(document).ready(function() {
+					get_tickets();
+				});
+			</script>
 		<?php } ?>
 
 	</body>

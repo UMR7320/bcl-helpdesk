@@ -163,6 +163,11 @@ if(file_exists('login.php')) {
 			<script src="../js/linechart.js"></script>
 			<script src="../js/common.js"></script>
 			<script src="js/db.js"></script>
+			<script type="text/javascript">
+				$(document).ready(function() {
+					get_tickets();
+				});
+			</script>
 
 	</body>
 </html>

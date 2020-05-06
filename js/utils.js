@@ -20,7 +20,7 @@ $.urlParam = function(name){
 /*
  * DOCUMENT READY OPERATIONS
  */ 
-$(document).ready(function() {
+function get_tickets() {
     // READ DATABASE
 	db_read();
 
@@ -49,5 +49,5 @@ $(document).ready(function() {
         $(".file-label").text(this.files.length + " fichiers");
     });
 
-});
+};
 
