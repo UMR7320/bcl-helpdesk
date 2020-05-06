@@ -169,6 +169,7 @@ $RealIpAddr !== "::1";
 		<script src="assets/js/main.js"></script>
 		<script src="lib/__jquery.tablesorter/jquery.tablesorter.js"></script>
 		<script src="lib/d3/d3.min.js"></script>
+		<script src="js/utils.js"></script>
 
 		<?php if ($unknown_ip) { ?>
 			<script type="text/javascript">
@@ -178,7 +179,6 @@ $RealIpAddr !== "::1";
 				});
 			</script>
 		<?php } else { ?>
-			<script src="js/utils.js"></script>
 			<script src="js/piechart.js"></script>
 			<script src="js/linechart.js"></script>
 			<script src="js/common.js"></script>

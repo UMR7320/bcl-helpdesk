@@ -158,7 +158,7 @@ if(file_exists('login.php')) {
 			<script src="../assets/js/main.js"></script>
 			<script type="text/javascript" src="../lib/__jquery.tablesorter/jquery.tablesorter.js"></script>
 			<script src="../lib/d3/d3.min.js"></script>
-			<script src="../js/utils.js?token=dsqfqs"></script>
+			<script src="../js/utils.js"></script>
 			<script src="../js/piechart.js"></script>
 			<script src="../js/linechart.js"></script>
 			<script src="../js/common.js"></script>
